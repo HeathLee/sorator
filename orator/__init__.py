@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-__version__ = '0.12.4'
+__version__ = '0.12.5'
 
 from .orm import Model, SoftDeletes, Collection, accessor, mutator, scope # noqa
 from .database_manager import DatabaseManager # noqa

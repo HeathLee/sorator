@@ -169,15 +169,16 @@ class LengthValidator(BaseValidator):
 
 
 class UniquenessValidator(BaseValidator):
-    """validates that the value is unique in db
+    """This function is deprecated.
+    validates that the value is unique in db
     """
 
     def __init__(self, status):
         self._status = status
 
     def __call__(self, instance, value):
-        column = self.func_name.split('_')[-1]
-        if (instance.is_dirty(column) or not instance._exists) and (
+        column = self.func_name.split('_', maxsplit=1)[1]
+        if (instance.is_dirty(column) or not instance.exists) and (
                 instance.__class__.where(column, '=', value).limit(1).get()):
             raise ValidationError("duplicate record")
         return value
