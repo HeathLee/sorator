@@ -3013,4 +3013,7 @@ class Model(metaclass=MetaModel):
         self.set_exists(state['exists'])
 
     def __repr__(self):
-        return '{cls}({attributes})'.format(cls=self.__class__.__name__, attributes=self.attributes_to_dict())
+        return '{cls}({attributes})'.format(
+            cls=self.__class__.__name__,
+            attributes=self.attributes_to_dict()
+        )
