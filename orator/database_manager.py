@@ -101,20 +101,7 @@ class BaseDatabaseManager(ConnectionResolverInterface):
         logger.debug('Reconnecting %s' % name)
 
         self.disconnect(name)
-
-        if name not in self._connections:
-            return self.connection(name)
-
-        return self._refresh_api_connections(name)
-
-    def _refresh_api_connections(self, name):
-        logger.debug('Refreshing api connections for %s' % name)
-
-        fresh = self._make_connection(name)
-
-        return self._connections[name]\
-            .set_connection(fresh.get_connection())\
-            .set_read_connection(fresh.get_read_connection())
+        return self.connection(name)
 
     def _make_connection(self, name):
         logger.debug('Making connection for %s' % name)
