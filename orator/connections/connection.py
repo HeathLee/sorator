@@ -337,9 +337,9 @@ class Connection(ConnectionInterface):
     def _try_again_if_caused_by_lost_connection(
             self, e, query, bindings, callback, *args, **kwargs):
         if self._caused_by_lost_connection(e):
-            self.reconnect()
+            new_connection = self.reconnect()
 
-            return callback(self, query, bindings, *args, **kwargs)
+            return callback(new_connection, query, bindings, *args, **kwargs)
 
         raise_from_cause(self._connection.get_api(), query, bindings, e)
 
