@@ -3011,3 +3011,9 @@ class Model(metaclass=MetaModel):
         self.set_raw_attributes(state['attributes'], True)
         self.set_relations(state['relations'])
         self.set_exists(state['exists'])
+
+    def __repr__(self):
+        return '{cls}({attributes})'.format(
+            cls=self.__class__.__name__,
+            attributes=self.attributes_to_dict()
+        )
