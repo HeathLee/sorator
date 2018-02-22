@@ -67,23 +67,6 @@ class BaseDatabaseManager(ConnectionResolverInterface):
 
         return name, None
 
-    def purge(self, name=None):
-        """
-        Disconnect from the given database and remove from local cache
-
-        :param name: The name of the connection
-        :type name: str
-
-        :rtype: None
-        """
-        if name is None:
-            name = self.get_default_connection()
-
-        self.disconnect(name)
-
-        if name in self._connections:
-            del self._connections[name]
-
     def disconnect(self, name=None):
         if name is None:
             name = self.get_default_connection()
