@@ -355,7 +355,8 @@ class Connection(ConnectionInterface):
                   'server closed the connection unexpectedly',
                   'SSL connection has been closed unexpectedly',
                   'Error writing data to the connection',
-                  'Resource deadlock avoided', ]:
+                  'Resource deadlock avoided',
+                  'Commands out of sync']:
             if s.lower() in message:
                 return True
 
