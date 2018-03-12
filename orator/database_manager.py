@@ -107,7 +107,7 @@ class BaseDatabaseManager(ConnectionResolverInterface):
         logger.debug('Preparing connection %s' % connection.get_name())
 
         def reconnector(connection_):
-            self.reconnect(connection_.get_name())
+            return self.reconnect(connection_.get_name())
 
         connection.set_reconnector(reconnector)
 
